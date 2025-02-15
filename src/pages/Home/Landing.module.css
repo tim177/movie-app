@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Background Layers */
+.hero_one,
+.hero_two {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.hero_one {
+  background: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1")
+    no-repeat center center;
+  filter: brightness(0.4); /* Darker for contrast */
+}
+
+.hero_two {
+  background: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.6) 20%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+/* Main Title */
+.header_title {
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.3);
+  line-height: 1.2;
+  max-width: 800px;
+}
+
+/* Primary Highlight */
+.header_primary {
+  display: block;
+  font-size: 70px;
+  text-transform: uppercase;
+  color: #ff4b2b;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtitle */
+.header_sub {
+  font-size: 28px;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+/* Tagline */
+.description {
+  font-size: 20px;
+  color: white;
+  max-width: 600px;
+  margin-top: 15px;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+/* Controls (Buttons) */
+.controls {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}
+
+/* Buttons */
+.button {
+  background: #ff4b2b;
+  color: white;
+  border: none;
+  padding: 16px 50px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 5px 20px rgba(255, 75, 43, 0.4);
+}
+
+.button:hover {
+  background: #ff416c;
+  transform: scale(1.07);
+}
+
+/* Secondary (Transparent) Button */
+.secondary {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+}
+
+.secondary:hover {
+  background: white;
+  color: black;
+}
