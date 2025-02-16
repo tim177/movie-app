@@ -53,3 +53,8 @@ export interface videoresult {
   id: string;
 }
 [];
+
+export interface CastProps {
+  cast?: CastType[];
+  loading: boolean;
+}

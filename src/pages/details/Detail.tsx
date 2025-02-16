@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 import { useStyle } from "../../styles/useStyle";
 import { CreditType, videoType } from "../../types/MovieDetail/Credit";
 import fetchDataFromApi from "../../api";
-import DetailBanner from "./DetailsBanner";
 import { useQuery } from "@tanstack/react-query";
-import Cast from "./Cast";
+import Cast from "./Cast/Cast";
+import DetailBanner from "./DetailBanner";
 
 const Detail = () => {
   const { classes } = useStyle();

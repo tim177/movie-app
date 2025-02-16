@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode, Suspense, useState } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -6,7 +6,13 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Loader, Text } from "@mantine/core";
+import {
+  Loader,
+  Text,
+  MantineProvider,
+  ColorSchemeProvider,
+  ColorScheme,
+} from "@mantine/core";
 import { motion } from "framer-motion";
 
 import AppLayout from "./components/layout/AppLayout";
@@ -123,12 +129,34 @@ const queryClient = new QueryClient({
   },
 });
 
+function Root() {
+  const [colorScheme, setColorScheme] = useState<ColorScheme>("light");
+
+  const toggleColorScheme = (value?: ColorScheme) =>
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+
+  return (
+    <AuthProvider>
+      <StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <ColorSchemeProvider
+            colorScheme={colorScheme}
+            toggleColorScheme={toggleColorScheme}
+          >
+            <MantineProvider
+              theme={{ colorScheme }}
+              withGlobalStyles
+              withNormalizeCSS
+            >
+              <RouterProvider router={router} />
+            </MantineProvider>
+          </ColorSchemeProvider>
+        </QueryClientProvider>
+      </StrictMode>
+    </AuthProvider>
+  );
+}
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <AuthProvider>
-    <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </StrictMode>
-  </AuthProvider>
+  <Root />
 );

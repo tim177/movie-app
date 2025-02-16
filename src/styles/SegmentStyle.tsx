@@ -12,7 +12,7 @@ export const useSegements = createStyles((theme) => ({
   },
 
   indicator: {
-    backgroundImage: "linear-gradient(to left top, #f7ff00, #db36a4)",
+    backgroundImage: "linear-gradient(to left top, #ff8243, #f94d00)",
   },
 
   control: {

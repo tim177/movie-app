@@ -37,7 +37,7 @@ const Popular = () => {
             Popular
           </Title>
           <SegmentedControl
-            radius="xl"
+            radius="sm"
             size="sm"
             data={Object.keys(MEDIA_TYPES)}
             classNames={classes}

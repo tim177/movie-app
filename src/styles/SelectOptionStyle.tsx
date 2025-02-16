@@ -1,10 +1,10 @@
-import { GeneresProps, sortDataType } from "../types/MovieDetail/MediaDetail";
+import { Genre, SortOption } from "../types/MovieDetail/MediaDetail";
 import { StylesConfig } from "react-select";
 
-const colourStyles: StylesConfig<GeneresProps> = {
+const colourStyles: StylesConfig<Genre> = {
   control: (baseStyle) => ({
     ...baseStyle,
-    background: "#173d77",
+    background: "#f87171",
     fontWeight: 500,
     border: 0,
     color: "white",
@@ -57,7 +57,7 @@ const colourStyles: StylesConfig<GeneresProps> = {
   }),
 };
 
-const colourStyles2: StylesConfig<sortDataType> = {
+const colourStyles2: StylesConfig<SortOption> = {
   control: (baseStyle) => ({
     ...baseStyle,
     background: "#173d77",

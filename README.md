@@ -8,7 +8,7 @@ Here's a detailed **README.md** for your project, keeping it professional, well-
 
 _A React-based movie exploration app with Firebase authentication, Firestore integration, and a dynamic UI powered by Mantine and NextUI._
 
-![Movie App Screenshot](../part1/src/assets/HomePage.png)
+![Movie App Screenshot](https://raw.githubusercontent.com/tim177/movie-app/refs/heads/main/src/assets/HomePage.png)
 
 > ⚡ **Note**: Replace `path/to/your/screenshot.png` with the actual image file path.
 
@@ -32,13 +32,11 @@ _A React-based movie exploration app with Firebase authentication, Firestore int
 
 ## 🚀 **Features**
 
-✔️ **Movie & TV Show Search** – Search for trending movies & TV shows.  
-✔️ **Movie Details Page** – View full details, ratings, and trailers.  
+✔️ **Movie Details Page** – View full details, ratings, summary.  
 ✔️ **Carousel & Hero Section** – Dynamic movie carousels with a featured section.  
 ✔️ **Authentication** – Firebase authentication with role-based access control.  
 ✔️ **Firestore Integration** – Store user preferences, watchlists, and favorites.  
 ✔️ **Dark Mode** – Customizable theme switching.  
-✔️ **Responsive Design** – Optimized UI across all devices.  
 ✔️ **Mantine Components** – Modern UI elements from Mantine & NextUI.
 
 ---
@@ -49,7 +47,6 @@ _A React-based movie exploration app with Firebase authentication, Firestore int
 
 - **React.js** – UI library
 - **Mantine v6** – UI components
-- **NextUI** – Dashboard & advanced styling
 - **React Query** – Data fetching & caching
 - **TypeScript** – Strict type checking
 - **Zustand** – State management
@@ -70,7 +67,7 @@ Before you begin, ensure you have the following installed:
 
 - **Node.js (v20+)** ✅
 - **Yarn** or **npm** ✅
-- **Firebase CLI** (if deploying Firebase functions) ✅
+- **Firebase CLI** ✅
 
 ### 🔹 **Clone the Repository**
 
@@ -139,8 +136,8 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
  ┃ ┣ 📂 components      # Reusable UI components
  ┃ ┣ 📂 hooks           # Custom hooks
  ┃ ┣ 📂 pages           # Page components (React Router)
- ┃ ┣ 📂 services        # API & Firebase interactions
- ┃ ┣ 📂 state           # RecoilJS state management
+ ┃ ┣ 📂 contexts        # API & Firebase interactions
+ ┃ ┣ 📂 store           # Zustand state management
  ┃ ┣ 📂 styles          # Global styles & themes
  ┃ ┣ 📂 types           # TypeScript interfaces
  ┃ ┣ 📜 App.tsx         # Main App component
@@ -158,12 +155,12 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
 ### 🔹 **Homepage**
 
 _Example screenshot of homepage UI_  
-![Homepage](../part1/src/assets/movie_dashboard.png)
+![Homepage](https://raw.githubusercontent.com/tim177/movie-app/refs/heads/main/src/assets/movie_dashboard.png)
 
 ### 🔹 **Movie Details Page**
 
 _Example screenshot of movie details page_  
-![Movie Details](../part1/src/assets/movie_detail.png)
+![Movie Details](https://github.com/tim177/movie-app/blob/main/src/assets/movie_detail.png?raw=true)
 
 ---
 
@@ -176,7 +173,6 @@ This app uses the **TMDB API** for fetching movies.
 - 🔍 `GET /trending/all/week` – Fetch trending movies & shows
 - 🎬 `GET /movie/{movie_id}` – Get movie details
 - 📺 `GET /tv/{tv_id}` – Get TV show details
-- 🎞️ `GET /movie/{movie_id}/videos` – Get trailers
 
 > **API Docs:** [TMDB API Documentation](https://developers.themoviedb.org/3/getting-started/introduction)
 
@@ -185,10 +181,10 @@ This app uses the **TMDB API** for fetching movies.
 ## 🎯 **Future Enhancements**
 
 🔹 **User Reviews & Ratings** – Allow users to submit reviews.  
-🔹 **Personalized Recommendations** – AI-based movie suggestions.  
-🔹 **Multi-Language Support** – Expand to more languages.  
-🔹 **Offline Mode** – Caching movies for offline viewing.  
-🔹 **PWA Support** – Convert to a Progressive Web App.
+🔹 **Chat Service** – Useres can comment and give review about movie.  
+🔹 **Google Based Auth** – User can authenticate using google account.
+🔹 **Home Page** – Come up with ideas to design the homepage completely.
+🔹 **Integrate Stripe** – Just to test and have fun✌🏻.
 
 ---
 

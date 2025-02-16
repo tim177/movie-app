@@ -40,7 +40,7 @@ const Trending = () => {
             Trending
           </Title>
           <SegmentedControl
-            radius="xl"
+            radius="sm"
             size="sm"
             data={Object.keys(TRENDING_TYPES)}
             classNames={classes}

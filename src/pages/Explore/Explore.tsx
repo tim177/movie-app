@@ -42,7 +42,6 @@ export default function Explore() {
         ),
     });
 
-  console.log("Explore.tsx🤷🏻🤷🏻", exploreData);
   return (
     <>
       <Flex justify={"space-between"} style={{ flexFlow: "row wrap" }} my={20}>

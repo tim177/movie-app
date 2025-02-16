@@ -21,7 +21,7 @@ export default function MovieCard({ data, mediaType }: MovieCardProps) {
           alt={data.title}
           radius="lg"
         />
-        <Text fw={500} size="sm" ta="center" mt={5} color="white">
+        <Text fw={500} size="sm" ta="center" mt={5}>
           {data.title}
         </Text>
         <Group spacing="xs" position="center">

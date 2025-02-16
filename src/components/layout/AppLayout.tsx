@@ -11,19 +11,28 @@ import {
   Flex,
   ThemeIcon,
   Button,
+  ActionIcon,
+  Title,
+  TextInput,
 } from "@mantine/core";
+import { useMantineColorScheme } from "@mantine/core";
+import {
+  IconBrandAdobe,
+  IconSun,
+  IconMoon,
+  IconMoonStars,
+  IconSearch,
+} from "@tabler/icons-react";
 import Sidebar from "./Sidebar";
-import { IconBrandAdobe } from "@tabler/icons-react";
 
 export default function AppLayout() {
   const theme = useMantineTheme();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [opened, setOpened] = useState(false);
 
   return (
     <AppShell
-      styles={{
-        main: { background: "black" },
-      }}
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={<Sidebar opened={opened} />}
@@ -43,6 +52,7 @@ export default function AppLayout() {
             </MediaQuery>
             <Flex
               justify="space-between"
+              align="center"
               w={"100vw"}
               px={"xl"}
               sx={{
@@ -50,10 +60,32 @@ export default function AppLayout() {
                 padding: "12px",
               }}
             >
-              <ThemeIcon color="red">
-                <IconBrandAdobe />
-              </ThemeIcon>
               <Group>
+                <ThemeIcon color="red">
+                  <IconBrandAdobe />
+                </ThemeIcon>
+                <Title
+                  order={3}
+                  variant="gradient"
+                  gradient={{ from: "red", to: "orange", deg: 45 }}
+                >
+                  MovieFlex
+                </Title>
+              </Group>
+              <Group>
+                <TextInput icon={<IconSearch />} placeholder="Search" />
+                <ActionIcon
+                  variant="outline"
+                  color={dark ? "yellow" : "blue"}
+                  onClick={() => toggleColorScheme()}
+                  title="Toggle color scheme"
+                >
+                  {dark ? (
+                    <IconSun size="1.1rem" />
+                  ) : (
+                    <IconMoonStars size="1.1rem" />
+                  )}
+                </ActionIcon>
                 <Button color="red">Logout</Button>
               </Group>
             </Flex>
