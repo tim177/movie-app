@@ -44,20 +44,33 @@ export default function MovieLanding() {
           transition: "all 0.3s",
         })}
       >
-        <Container size="lg">
+        <Container
+          size="lg"
+          style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)" }}
+        >
           <Group position="apart">
             <Title order={2} color="white">
-              MovieFlix
+              MovieVerse
             </Title>
             <Group>
               <Button variant="subtle" color="gray">
-                <Link to={"/login"}>Login</Link>
+                <Link
+                  to="/login"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Login
+                </Link>
               </Button>
               <Button
                 variant="gradient"
                 gradient={{ from: "pink", to: "violet" }}
               >
-                <Link to={"/register"}> Start Watching</Link>
+                <Link
+                  to="/register"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Start Exploring
+                </Link>
               </Button>
             </Group>
           </Group>
@@ -96,7 +109,7 @@ export default function MovieLanding() {
                   },
                 })}
               >
-                Unlimited Movies, TV Shows, & More
+                Find Your Next Favorite Movie!
               </Title>
               <Text
                 size="xl"
@@ -106,21 +119,23 @@ export default function MovieLanding() {
                 sx={{ maxWidth: 600 }}
                 mx="auto"
               >
-                Watch anywhere. Cancel anytime. Ready to watch? Enter your email
-                to create or restart your membership.
+                Don't know what to watch next? No worries! With MovieVerse, you
+                can save your favorites, read reviews, and explore the best
+                movies all in one place. The next great movie is waiting for
+                you!
               </Text>
               <Group position="center">
-                <TextInput
-                  size="lg"
-                  placeholder="Email address"
-                  sx={{ minWidth: 300 }}
-                />
                 <Button
                   size="lg"
                   variant="gradient"
                   gradient={{ from: "pink", to: "violet" }}
                 >
-                  Get Started
+                  <Link
+                    to="/register"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    Start Exploring
+                  </Link>
                 </Button>
               </Group>
             </Box>
