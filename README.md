@@ -156,6 +156,11 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
 
 ## 📸 **Screenshots**
 
+### **Login**
+
+**email**: user1@use.com
+**password**: password
+
 ### 🔹 **Homepage**
 
 _Example screenshot of homepage UI_  
