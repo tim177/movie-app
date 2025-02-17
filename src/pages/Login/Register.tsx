@@ -39,6 +39,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [error, setError] = useState<string | null>(null); // State for error message
   const navigate = useNavigate();
 
   const theme = useMantineTheme();
@@ -50,6 +51,7 @@ const Register = () => {
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
+    setError(null); // Reset error state before trying to register
 
     try {
       await register(email, password);
@@ -62,6 +64,7 @@ const Register = () => {
       });
       navigate("/login");
     } catch (err: any) {
+      setError(err.message || "Something went wrong 😕"); // Set error message
       notifications.show({
         title: "Registration Failed",
         message: err.message || "Something went wrong 😕",
@@ -143,6 +146,13 @@ const Register = () => {
                   required
                 />
               </Stack>
+
+              {/* Display error message above the button */}
+              {error && (
+                <Text color="red" size="sm" align="center" mt="sm">
+                  {error}
+                </Text>
+              )}
 
               <Button
                 fullWidth

@@ -1,0 +1,13 @@
+.posterImage {
+  width: 100%;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .posterImage {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+}

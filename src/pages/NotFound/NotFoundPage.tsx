@@ -6,6 +6,7 @@ import {
   Text,
   Title,
 } from "@mantine/core";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import classes from "./NotFoundImage.module.css";
 
 export function NotFoundPage() {
@@ -23,18 +24,20 @@ export function NotFoundPage() {
         <div>
           <Title className={classes.title}>Something is not right...</Title>
           <Text c="dimmed" size="lg">
-            Page you are trying to open does not exist. You may have mistyped
-            the address, or the page has been moved to another URL. If you think
-            this is an error contact support.
+            The page you are trying to open does not exist. You may have
+            mistyped the address, or the page has been moved to another URL. If
+            you think this is an error, contact support.
           </Text>
-          <Button
-            variant="outline"
-            size="md"
-            mt="xl"
-            className={classes.control}
-          >
-            Get back to home page
-          </Button>
+          <Link to="/app/explore">
+            <Button
+              variant="outline"
+              size="md"
+              mt="xl"
+              className={classes.control}
+            >
+              Get back to home page
+            </Button>
+          </Link>
         </div>
         <Image
           src="https://ui.mantine.dev/_next/static/media/image.11cd6c19.svg"

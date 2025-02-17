@@ -35,6 +35,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null); // New state for error
   const navigate = useNavigate();
   const theme = useMantineTheme();
 
@@ -43,9 +44,29 @@ const Login = () => {
 
   const { login } = useAuth();
 
+  // Helper function to validate the email format
+  const validateEmail = (email: string): boolean => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
+    setError(null); // Reset the error state
+
+    // Validate email and password before making the API request
+    if (!email || !password) {
+      setError("Please enter both email and password.");
+      setLoading(false);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address.");
+      setLoading(false);
+      return;
+    }
 
     try {
       await login(email, password);
@@ -57,9 +78,26 @@ const Login = () => {
       });
       navigate("/app");
     } catch (err: any) {
+      // Handle the specific API error
+      let errorMessage = err.message || "Login failed. Please try again.";
+
+      // Check if the error message is related to the email being already in use
+      if (err.code === "EMAIL_ALREADY_IN_USE") {
+        errorMessage =
+          "This email is already in use. Please use a different email.";
+      }
+
+      // Handle invalid credentials
+      if (err.code === "INVALID_CREDENTIALS") {
+        errorMessage = "Invalid email or password. Please try again.";
+      }
+
+      // Set the error state for general API issues
+      setError(errorMessage);
+
       notifications.show({
         title: "Login Failed",
-        message: err.message || "Invalid credentials",
+        message: errorMessage,
         color: "red",
         icon: <IconX size={18} />,
       });
@@ -142,6 +180,7 @@ const Login = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  error={error && error.includes("email")} // Display error message for email
                 />
                 <PasswordInput
                   value={password}
@@ -150,6 +189,7 @@ const Login = () => {
                   placeholder="Your password"
                   size="md"
                   required
+                  error={error && error.includes("password")} // Display error message for password
                 />
                 <Group position="apart" mt="sm">
                   <Checkbox label="Keep me logged in" />
@@ -163,6 +203,13 @@ const Login = () => {
                   </Anchor>
                 </Group>
               </Stack>
+
+              {/* Error message display above the submit button */}
+              {error && (
+                <Text color="red" size="sm" align="center" mt="sm">
+                  {error}
+                </Text>
+              )}
 
               <Button
                 fullWidth

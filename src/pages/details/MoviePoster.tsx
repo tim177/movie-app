@@ -1,6 +1,7 @@
 import { FC } from "react";
-import { Card, ThemeIcon } from "@mantine/core";
+import { Card, Image, ThemeIcon } from "@mantine/core";
 import { IconBrandYoutube } from "@tabler/icons-react";
+import classes from "./MoviePoster.module.css";
 
 interface MoviePosterProps {
   posterPath?: string;
@@ -9,7 +10,8 @@ interface MoviePosterProps {
 const MoviePoster: FC<MoviePosterProps> = ({ posterPath }) => (
   <>
     <Card p={0} m="xl">
-      <img
+      <Image
+        className={classes.posterImage} // Add className to the image
         width="100%"
         height="100%"
         src={`https://image.tmdb.org/t/p/original/${posterPath}`}
@@ -18,7 +20,6 @@ const MoviePoster: FC<MoviePosterProps> = ({ posterPath }) => (
     </Card>
     <ThemeIcon
       radius="xl"
-      size="xl"
       mb={20}
       color="red"
       variant="light"
