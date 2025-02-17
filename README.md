@@ -1,7 +1,5 @@
 # 📌 **Project README Template**
 
-Here's a detailed **README.md** for your project, keeping it professional, well-structured, and informative.
-
 ---
 
 # 🎬 **Movie App**
@@ -9,8 +7,6 @@ Here's a detailed **README.md** for your project, keeping it professional, well-
 _A React-based movie exploration app with Firebase authentication, Firestore integration, and a dynamic UI powered by Mantine and NextUI._
 
 ![Movie App Screenshot](https://raw.githubusercontent.com/tim177/movie-app/refs/heads/main/src/assets/HomePage.png)
-
-> ⚡ **Note**: Replace `path/to/your/screenshot.png` with the actual image file path.
 
 ---
 
@@ -72,7 +68,7 @@ Before you begin, ensure you have the following installed:
 ### 🔹 **Clone the Repository**
 
 ```sh
-git clone https://github.com/your-username/movie-app.git
+git clone https://github.com/tim177/movie-app.git
 cd movie-app
 ```
 
@@ -133,19 +129,27 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
 ```
 📦 movie-app
  ┣ 📂 src
- ┃ ┣ 📂 components      # Reusable UI components
- ┃ ┣ 📂 hooks           # Custom hooks
- ┃ ┣ 📂 pages           # Page components (React Router)
- ┃ ┣ 📂 contexts        # API & Firebase interactions
- ┃ ┣ 📂 store           # Zustand state management
- ┃ ┣ 📂 styles          # Global styles & themes
- ┃ ┣ 📂 types           # TypeScript interfaces
- ┃ ┣ 📜 App.tsx         # Main App component
- ┃ ┣ 📜 main.tsx        # Entry point
- ┃ ┗ 📜 index.css       # Global styles
- ┣ 📜 .env.local        # Environment variables
- ┣ 📜 package.json      # Dependencies & scripts
- ┗ 📜 README.md         # Documentation
+ ┃ ┣ 📂 api             # Functions for API requests and data fetching
+ ┃ ┣ 📂 assets          # Static assets like images, icons, and fonts
+ ┃ ┣ 📂 components      # Reusable UI components (buttons, cards, modals, etc.)
+ ┃ ┣ 📂 config          # Configuration files (e.g., app settings, API base URLs)
+ ┃ ┣ 📂 constants       # Global constants and enums used throughout the app
+ ┃ ┣ 📂 contexts        # React Context API implementations for global state
+ ┃ ┣ 📂 hooks           # Custom hooks for reusable logic (e.g., fetching, authentication)
+ ┃ ┣ 📂 pages           # Page components used in React Router
+ ┃ ┣ 📂 routes          # Application routing setup and protected routes
+ ┃ ┣ 📂 services        # Business logic and API service functions
+ ┃ ┣ 📂 store           # Zustand state management setup
+ ┃ ┣ 📂 style           # Global and component-specific styles
+ ┃ ┣ 📂 theme           # Theme configurations (colors, typography, Mantine/Styled Components)
+ ┃ ┣ 📂 types           # TypeScript interfaces and type definitions
+ ┃ ┣ 📂 util            # Utility functions and helpers
+ ┃ ┣ 📜 App.tsx         # Main App component handling global layout and providers
+ ┃ ┣ 📜 main.tsx        # Entry point that renders the App component
+ ┃ ┗ 📜 index.css       # Global styles and CSS resets
+ ┣ 📜 .env.local        # Environment variables for API keys and secrets
+ ┣ 📜 package.json      # Project dependencies, scripts, and metadata
+ ┗ 📜 README.md         # Project documentation and setup instructions
 ```
 
 ---
@@ -171,6 +175,8 @@ This app uses the **TMDB API** for fetching movies.
 ### 🔹 **Endpoints Used**
 
 - 🔍 `GET /trending/all/week` – Fetch trending movies & shows
+- 🔍 `GET /popular/all/week` – Fetch popular movies & shows
+- 🔍 `GET /top-rated/all/week` – Fetch top-rated movies & shows
 - 🎬 `GET /movie/{movie_id}` – Get movie details
 - 📺 `GET /tv/{tv_id}` – Get TV show details
 
@@ -182,8 +188,8 @@ This app uses the **TMDB API** for fetching movies.
 
 🔹 **User Reviews & Ratings** – Allow users to submit reviews.  
 🔹 **Chat Service** – Useres can comment and give review about movie.  
-🔹 **Google Based Auth** – User can authenticate using google account.
-🔹 **Home Page** – Come up with ideas to design the homepage completely.
+🔹 **Google Based Auth** – User can authenticate using google account.  
+🔹 **Home Page** – Come up with ideas to design the homepage completely.  
 🔹 **Integrate Stripe** – Just to test and have fun✌🏻.
 
 ---
@@ -196,7 +202,7 @@ This project is licensed under the **MIT License**.
 
 ## 📩 **Contact**
 
-📧 **Email:** timaraw18l@gmail.com  
+📧 **Email:** [timaraw18@gmail.com](mailto:timaraw18@gmail.com)
 🔗 **GitHub:** [tim177](https://github.com/tim177)
 
 ---
