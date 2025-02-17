@@ -1,3 +1,5 @@
+import type React from "react";
+
 import { useState } from "react";
 import {
   TextInput,
@@ -15,15 +17,16 @@ import {
   Box,
   useMantineTheme,
   Image,
+  Center,
 } from "@mantine/core";
 import { Link, useNavigate } from "react-router-dom";
-import { notifications, showNotification } from "@mantine/notifications";
+import { notifications } from "@mantine/notifications";
 import { useAuth } from "../../contexts/AuthContext";
 import {
   IconBrandGoogle,
   IconBrandTwitter,
   IconCheck,
-  IconCross,
+  IconX,
 } from "@tabler/icons-react";
 import { useMediaQuery } from "@mantine/hooks";
 import { motion } from "framer-motion";
@@ -31,47 +34,45 @@ import { motion } from "framer-motion";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const theme = useMantineTheme();
 
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
-  const [loading, setLoading] = useState(false);
+  const isTablet = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
   const { login } = useAuth();
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
-    setError("");
+    setLoading(true);
 
     try {
       await login(email, password);
-
-      showNotification({
+      notifications.show({
         title: "Login Successful",
         message: "You are now logged in!",
         color: "green",
         icon: <IconCheck size={18} />,
       });
-
-      navigate("/app"); // Redirect to /app after login
+      navigate("/app");
     } catch (err: any) {
-      showNotification({
+      notifications.show({
         title: "Login Failed",
         message: err.message || "Invalid credentials",
         color: "red",
-        icon: <IconCross size={18} />,
+        icon: <IconX size={18} />,
       });
-
-      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <Box
       sx={{
-        height: "100vh",
-        backgroundImage: theme.fn.linearGradient(
+        minHeight: "100vh",
+        background: theme.fn.linearGradient(
           45,
           theme.colors.cyan[6],
           theme.colors.indigo[9]
@@ -79,9 +80,10 @@ const Login = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        padding: theme.spacing.md,
       }}
     >
-      <Container size={isMobile ? "xs" : 900} px={isMobile ? "xs" : "xl"}>
+      <Container size={isTablet ? "xs" : 900} px="xs">
         <Paper
           radius="lg"
           p={isMobile ? "md" : "xl"}
@@ -89,18 +91,28 @@ const Login = () => {
           sx={{
             overflow: "hidden",
             display: "flex",
-            flexDirection: isMobile ? "column" : "row",
+            flexDirection: isTablet ? "column" : "row",
+            backgroundColor:
+              theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
           }}
         >
-          {!isMobile && (
+          {!isTablet && (
             <Box
               sx={{
                 flex: "1 1 50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <Image
                 src="https://wallpapercat.com/w/full/a/f/b/34537-1536x2732-iphone-hd-fight-club-background-photo.jpg"
-                maw={360}
+                alt="Login visual"
+                sx={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  borderRadius: theme.radius.md,
+                }}
               />
             </Box>
           )}
@@ -111,8 +123,10 @@ const Login = () => {
             transition={{ duration: 0.5 }}
             sx={{
               flex: "1 1 50%",
-              padding: isMobile ? 0 : theme.spacing.xl,
-              width: "100vw",
+              padding: isMobile ? theme.spacing.sm : theme.spacing.xl,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
             }}
           >
             <Title order={2} ta="center" mt="md" mb={50}>
@@ -120,7 +134,7 @@ const Login = () => {
             </Title>
 
             <form onSubmit={handleLogin}>
-              <Stack>
+              <Stack spacing="md">
                 <TextInput
                   label="Email address"
                   placeholder="hello@example.com"
@@ -137,19 +151,19 @@ const Login = () => {
                   size="md"
                   required
                 />
-                <Checkbox label="Keep me logged in" />
+                <Group position="apart" mt="sm">
+                  <Checkbox label="Keep me logged in" />
+                  <Anchor
+                    component="button"
+                    type="button"
+                    color="dimmed"
+                    size="sm"
+                  >
+                    Forgot password?
+                  </Anchor>
+                </Group>
               </Stack>
 
-              <Group position="apart" mt="xl">
-                <Anchor
-                  component="button"
-                  type="button"
-                  color="dimmed"
-                  size="xs"
-                >
-                  Forgot password?
-                </Anchor>
-              </Group>
               <Button
                 fullWidth
                 mt="xl"
@@ -180,12 +194,14 @@ const Login = () => {
               </Button>
             </Group>
 
-            <Text color="dimmed" size="sm" ta="center" mt={5}>
-              Don't have an account yet?{" "}
-              <Anchor size="sm" component="button" type="button">
-                <Link to="/register">Create account</Link>
-              </Anchor>
-            </Text>
+            <Center mt="md">
+              <Text color="dimmed" size="sm" inline>
+                Don't have an account yet?{" "}
+                <Anchor component={Link} to="/register" size="sm" weight={700}>
+                  Create account
+                </Anchor>
+              </Text>
+            </Center>
           </Box>
         </Paper>
       </Container>

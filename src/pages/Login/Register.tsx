@@ -1,3 +1,7 @@
+"use client";
+
+import type React from "react";
+
 import { useState } from "react";
 import {
   TextInput,
@@ -11,13 +15,21 @@ import {
   Anchor,
   useMantineTheme,
   Image,
+  createStyles,
+  Box,
+  Center,
 } from "@mantine/core";
 import { motion } from "framer-motion";
 import RegisterLogo from "../../assets/register_logo.svg";
-
 import { Link, useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
-import { IconCheck, IconMovie, IconX } from "@tabler/icons-react"; // Fixed IconCross to IconX
+import {
+  IconCheck,
+  IconMovie,
+  IconX,
+  IconMail,
+  IconLock,
+} from "@tabler/icons-react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useMediaQuery } from "@mantine/hooks";
 import { useStyles } from "../../styles/RegisterStyle";
@@ -26,7 +38,7 @@ const Register = () => {
   const { classes } = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const theme = useMantineTheme();
@@ -37,11 +49,10 @@ const Register = () => {
 
   const handleRegister = async (event: React.FormEvent) => {
     event.preventDefault();
-    setError("");
+    setLoading(true);
 
     try {
       await register(email, password);
-
       notifications.show({
         title: "Registration Successful",
         message: "Your account has been created! 🎉",
@@ -49,7 +60,6 @@ const Register = () => {
         icon: <IconCheck size={18} />,
         autoClose: 3000,
       });
-
       navigate("/login");
     } catch (err: any) {
       notifications.show({
@@ -59,64 +69,77 @@ const Register = () => {
         icon: <IconX size={18} />,
         autoClose: 5000,
       });
-
-      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className={classes.wrapper}>
-      <Container
-        size={isMobile ? "xs" : 900}
-        px={isMobile ? "xs" : "xl"}
-        pb={20}
-        style={{
-          display: "inline-block",
-          margin: "auto",
-        }}
-      >
-        <Paper className={classes.form} radius={0} p={isMobile ? "md" : 30}>
-          <Image src={RegisterLogo} width={200} height={100} mx={"auto"} />
+    <Box className={classes.wrapper}>
+      <Container size={420} my={20}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Paper className={classes.form} radius="lg" withBorder>
+            <Center mb="md">
+              <Image
+                src={RegisterLogo || "/placeholder.svg"}
+                className={classes.logo}
+                alt="MovieVerse Logo"
+              />
+            </Center>
 
-          <Title
-            order={2}
-            className={classes.title}
-            ta="center"
-            mt="md"
-            mb={20}
-          >
-            Join the MovieVerse!
-          </Title>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+            <Title
+              order={2}
+              className={classes.title}
+              ta="center"
+              mt="md"
+              mb={40}
+            >
+              Join the MovieVerse! 😎
+            </Title>
+
             <form onSubmit={handleRegister}>
               <Stack>
                 <TextInput
                   label="Name"
                   placeholder="Your full name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   size="md"
                   icon={<IconMovie size="1rem" />}
+                  classNames={{
+                    input: classes.input,
+                    label: classes.inputLabel,
+                  }}
                   required
                 />
                 <TextInput
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
                   label="Email address"
                   placeholder="hello@movieverse.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   size="md"
-                  icon={<IconMovie size="1rem" />}
+                  icon={<IconMail size="1rem" />}
+                  classNames={{
+                    input: classes.input,
+                    label: classes.inputLabel,
+                  }}
                   required
                 />
                 <PasswordInput
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                   label="Password"
                   placeholder="Your strong password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   size="md"
-                  icon={<IconMovie size="1rem" />}
+                  icon={<IconLock size="1rem" />}
+                  classNames={{
+                    input: classes.input,
+                    label: classes.inputLabel,
+                  }}
                   required
                 />
               </Stack>
@@ -127,21 +150,22 @@ const Register = () => {
                 size="md"
                 type="submit"
                 loading={loading}
+                className={classes.control}
               >
                 Create my account
               </Button>
             </form>
-          </motion.div>
 
-          <Text ta="center" mt="md">
-            Already have an account?{" "}
-            <Anchor component="button" weight={700}>
-              <Link to="/login">Login</Link>
-            </Anchor>
-          </Text>
-        </Paper>
+            <Text ta="center" mt="md">
+              Already have an account?{" "}
+              <Anchor component={Link} to="/login" weight={700}>
+                Login
+              </Anchor>
+            </Text>
+          </Paper>
+        </motion.div>
       </Container>
-    </div>
+    </Box>
   );
 };
 
