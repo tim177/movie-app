@@ -15,7 +15,7 @@ import {
 import { motion } from "framer-motion";
 import RegisterLogo from "../../assets/register_logo.svg";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 import { IconCheck, IconMovie, IconX } from "@tabler/icons-react"; // Fixed IconCross to IconX
 import { useAuth } from "../../contexts/AuthContext";
@@ -135,12 +135,8 @@ const Register = () => {
 
           <Text ta="center" mt="md">
             Already have an account?{" "}
-            <Anchor<"a">
-              href="/login"
-              weight={700}
-              // onClick={(event) => event.preventDefault()}
-            >
-              Login
+            <Anchor component="button" weight={700}>
+              <Link to="/login">Login</Link>
             </Anchor>
           </Text>
         </Paper>
