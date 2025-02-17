@@ -31,6 +31,7 @@ import {
   IconStar,
   IconCheck,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 export default function MovieLanding() {
   const theme = useMantineTheme();
@@ -153,13 +154,13 @@ export default function MovieLanding() {
             </Title>
             <Group>
               <Button variant="subtle" color="gray">
-                Login
+                <Link to={"/login"}>Login</Link>
               </Button>
               <Button
                 variant="gradient"
                 gradient={{ from: "pink", to: "violet" }}
               >
-                Start Watching
+                <Link to={"/register"}> Start Watching</Link>
               </Button>
             </Group>
           </Group>
