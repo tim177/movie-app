@@ -7,8 +7,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import fetchDataFromApi from "../../api";
 import { useStyle } from "../../styles/useStyle";
-import { CrewType, videoresult } from "../../types/MovieDetail/Credit";
-import { MediaDetail } from "../../types/MovieDetail/MediaDetail";
+import { CrewType, videoresult } from "../../types/Credit";
+import { MediaDetail } from "../../types/MediaDetail";
 import SkeletonComponent from "../../components/ui/SkeletonComponent";
 
 import MovieActions from "./MovieActions";

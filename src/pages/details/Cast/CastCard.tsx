@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Card, Skeleton, Text } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import Avator from "../../../assets/no-poster.png";
-import { CastType } from "../../../types/MovieDetail/Credit";
+import { CastType } from "../../../types/Credit";
 import { useStyle } from "../../../styles/useStyle";
 
 interface CastCardProps {

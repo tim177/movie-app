@@ -1,4 +1,4 @@
-import { Genre, SortOption } from "../types/MovieDetail/MediaDetail";
+import { Genre, SortOption } from "../types/MediaDetail";
 import { StylesConfig } from "react-select";
 
 const colourStyles: StylesConfig<Genre> = {

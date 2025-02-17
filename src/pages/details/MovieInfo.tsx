@@ -9,10 +9,9 @@ import {
   Divider,
   Rating,
 } from "@mantine/core";
-import { IconStar } from "@tabler/icons-react";
 
-import { MediaDetail } from "../../types/MovieDetail/MediaDetail";
-import { CrewType } from "../../types/MovieDetail/Credit";
+import { MediaDetail } from "../../types/MediaDetail";
+import { CrewType } from "../../types/Credit";
 import { genresProps } from "../../store/movieslice";
 import { toHourAndMinute } from "../../util/time";
 

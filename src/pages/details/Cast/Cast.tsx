@@ -3,7 +3,7 @@ import { Container, Title } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 
 import CastCard from "./CastCard";
-import { CastProps } from "../../../types/MovieDetail/Credit";
+import { CastProps } from "../../../types/Credit";
 import { useBreakpoints } from "../../../util/mediaQueries";
 
 const Cast: FC<CastProps> = ({ cast, loading }) => {

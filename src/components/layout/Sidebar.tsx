@@ -1,5 +1,6 @@
 import { Navbar, NavLink, Box, Divider, Title } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
+import { useMediaQuery } from "@mantine/hooks";
 import { NAV_LINKS } from "../../constants/navLinks";
 import {
   IconBrandGithub,
@@ -13,12 +14,13 @@ interface SidebarProps {
 
 export default function Sidebar({ opened }: SidebarProps) {
   const location = useLocation();
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <Navbar
       p="md"
       hiddenBreakpoint="sm"
-      hidden={!opened}
+      hidden={isMobile ? !opened : false} // Auto-hide on mobile
       width={{ sm: 180, lg: 250 }}
     >
       {/* Main Navigation */}
@@ -34,12 +36,8 @@ export default function Sidebar({ opened }: SidebarProps) {
             component={Link}
             color="red"
             to={item.href}
-            active={location.pathname === item.href}
-            styles={{
-              label: {
-                fontSize: "1.2rem",
-              },
-            }}
+            active={location.pathname.startsWith(item.href)}
+            sx={{ fontSize: "1.2rem" }}
           />
         ))}
       </Box>
@@ -57,7 +55,7 @@ export default function Sidebar({ opened }: SidebarProps) {
           component="a"
           href="https://github.com/tim177"
           target="_blank"
-          styles={{ label: { fontSize: "1.2rem" } }}
+          sx={{ fontSize: "1.2rem" }}
         />
         <NavLink
           label="LinkedIn"
@@ -65,14 +63,14 @@ export default function Sidebar({ opened }: SidebarProps) {
           component="a"
           href="https://www.linkedin.com/in/amit-singh-b19022217/"
           target="_blank"
-          styles={{ label: { fontSize: "1.2rem" } }}
+          sx={{ fontSize: "1.2rem" }}
         />
         <NavLink
           label="Contact"
           icon={<IconMail size="1.2rem" stroke={2} />}
           component="a"
           href="mailto:timaraw18@gmail.com"
-          styles={{ label: { fontSize: "1.2rem" } }}
+          sx={{ fontSize: "1.2rem" }}
         />
       </Box>
     </Navbar>

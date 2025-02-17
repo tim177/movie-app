@@ -1,6 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import { Loader, Text } from "@mantine/core";
+import { Loader, Text, Center } from "@mantine/core";
 import { ReactNode } from "react";
 
 interface ProtectedRouteProps {
@@ -12,14 +12,18 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   if (isLoading) {
     return (
-      <div className="loader-container">
+      <Center style={{ height: "100vh", flexDirection: "column" }}>
         <Loader size="lg" />
-        <Text>Loading...</Text>
-      </div>
+        <Text mt="md">Loading...</Text>
+      </Center>
     );
   }
 
-  return user ? children || <Outlet /> : <Navigate to="/login" replace />;
+  return user ? (
+    <>{children ?? <Outlet />}</>
+  ) : (
+    <Navigate to="/login" replace />
+  );
 };
 
 export default ProtectedRoute;

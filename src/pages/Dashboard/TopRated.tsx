@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import { useQuery } from "@tanstack/react-query";
 import { useSegements } from "../../styles/SegmentStyle";
-import CarouselComponent from "../../components/ui/CarouselComponent";
 import { fetchTopRatedMedia } from "../../api/media";
-import { MediaList } from "../../types/Movietype/MediaList";
+import { MediaList } from "../../types/MediaList";
+import CarouselComponent from "../../components/shared/CarouselComponent";
 
 // Media types constant (kept outside to avoid re-creation)
 const MEDIA_TYPES = { TV: "tv", MOVIE: "movie" } as const;

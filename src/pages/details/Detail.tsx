@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import { useStyle } from "../../styles/useStyle";
-import { CreditType, videoType } from "../../types/MovieDetail/Credit";
+import { CreditType, videoType } from "../../types/Credit";
 import fetchDataFromApi from "../../api";
 import { useQuery } from "@tanstack/react-query";
 import Cast from "./Cast/Cast";

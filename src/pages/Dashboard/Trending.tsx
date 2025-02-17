@@ -2,10 +2,10 @@ import { Box, Container, Flex, SegmentedControl, Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import fetchDataFromApi from "../../api";
-import { MediaList } from "../../types/Movietype/MediaList";
+import { MediaList } from "../../types/MediaList";
 import { useMediaQuery } from "@mantine/hooks";
 import { useSegements } from "../../styles/SegmentStyle";
-import CarouselComponent from "../../components/ui/CarouselComponent";
+import CarouselComponent from "../../components/shared/CarouselComponent";
 
 const TRENDING_TYPES = { DAY: "day", WEEK: "week" } as const;
 

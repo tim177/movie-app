@@ -1,7 +1,7 @@
 import { Flex, Image, Text, Group } from "@mantine/core";
 import { IconStar } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
-import { MediaDetail } from "../../types/MovieDetail/MediaDetail";
+import { MediaDetail } from "../../types/MediaDetail";
 
 interface MovieCardProps {
   data: MediaDetail;

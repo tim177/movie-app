@@ -1,19 +1,40 @@
 import {
   IconBrandSafari,
   IconDeviceTvOld,
-  IconGift,
   IconHeart,
   IconVideoPlus,
 } from "@tabler/icons-react";
 
-export const NAV_LINKS = [
+export type NavLink = {
+  id: string;
+  icon: React.ElementType;
+  label: string;
+  href: string;
+};
+
+export const NAV_LINKS: NavLink[] = [
   {
+    id: "explore",
     icon: IconBrandSafari,
     label: "Explore",
     href: "/app/explore",
   },
-  { icon: IconVideoPlus, label: "Movies", href: "/app/movie" },
-  { icon: IconDeviceTvOld, label: "TV", href: "/app/tv" },
-
-  { icon: IconHeart, label: "Favourite", href: "/app/favourite" },
+  {
+    id: "movies",
+    icon: IconVideoPlus,
+    label: "Movies",
+    href: "/app/movie",
+  },
+  {
+    id: "tv-shows",
+    icon: IconDeviceTvOld,
+    label: "TV Shows",
+    href: "/app/tv",
+  },
+  {
+    id: "favorites",
+    icon: IconHeart,
+    label: "Favorites",
+    href: "/app/favourite",
+  },
 ];

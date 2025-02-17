@@ -1,5 +1,5 @@
 import { Select } from "@mantine/core";
-import { SortOption } from "../../types/MovieDetail/MediaDetail";
+import { SortOption } from "../../types/MediaDetail";
 
 const sortOptions: SortOption[] = [
   { value: "popularity.desc", label: "Popularity Descending" },

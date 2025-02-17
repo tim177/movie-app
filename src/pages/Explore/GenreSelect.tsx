@@ -1,5 +1,5 @@
 import { MultiSelect } from "@mantine/core";
-import { Genre } from "../../types/MovieDetail/MediaDetail";
+import { Genre } from "../../types/MediaDetail";
 
 interface GenreSelectProps {
   genres: Genre[];

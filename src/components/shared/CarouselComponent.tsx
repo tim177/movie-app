@@ -1,22 +1,15 @@
 import React, { useMemo } from "react";
 import { Carousel } from "@mantine/carousel";
-import { Skeleton, Title, Text } from "@mantine/core";
+import { Title, Text } from "@mantine/core";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
 import { useStyle } from "../../styles/useStyle";
-import MovieCard from "./MovieCard";
-import { MediaItem } from "../../types/Movietype/MediaList";
-import { useMediaQuery } from "@mantine/hooks";
-
-/** Custom Hook for Media Queries */
-const useMediaQueries = () => {
-  return {
-    isTabletOrSmaller: useMediaQuery("(max-width: 768px)"),
-    isMobile: useMediaQuery("(max-width: 420px)"),
-  };
-};
+import { MediaItem } from "../../types/MediaList";
+import CarouselSkeleton from "./CarouselSkeleton";
+import { useMediaQueries } from "./useMediaQueries";
+import MovieCard from "../ui/MovieCard";
 
 interface CarouselProps {
   title?: string;
@@ -25,7 +18,6 @@ interface CarouselProps {
   endpoint?: string | string[];
 }
 
-/** Carousel Component */
 const CarouselComponent: React.FC<CarouselProps> = ({
   title,
   data = [],
@@ -34,48 +26,13 @@ const CarouselComponent: React.FC<CarouselProps> = ({
 }) => {
   const { isTabletOrSmaller, isMobile } = useMediaQueries();
   const { classes } = useStyle();
-
-  /** Extracts the first endpoint if it's an array */
   const mediaType = useMemo(
     () => (Array.isArray(endpoint) ? endpoint[0] : endpoint),
     [endpoint]
   );
 
-  /** Renders a loading skeleton */
-  const renderLoadingSkeleton = () => (
-    <>
-      {title && (
-        <Title fw={500} size={isTabletOrSmaller ? 18 : 20}>
-          {title}
-        </Title>
-      )}
-      <Carousel my={20} slideSize="20%" slideGap="lg" loop align="start">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <Carousel.Slide key={index}>
-            <Skeleton height={300} width="100%" className={classes.skeleton} />
-            <Skeleton
-              mt={20}
-              height={20}
-              width="90%"
-              className={classes.skeleton}
-            />
-            <Skeleton
-              mt={20}
-              height={20}
-              width="50%"
-              className={classes.skeleton}
-            />
-          </Carousel.Slide>
-        ))}
-      </Carousel>
-    </>
-  );
-
-  /** Renders empty state */
-  const renderEmptyState = () => <Text>No data available</Text>;
-
-  if (loading) return renderLoadingSkeleton();
-  if (!data.length) return renderEmptyState();
+  if (loading) return <CarouselSkeleton title={title} />;
+  if (!data.length) return <Text>No data available</Text>;
 
   return (
     <>

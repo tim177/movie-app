@@ -2,11 +2,7 @@ import { Flex, Group, Loader, SimpleGrid, Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  Genre,
-  MediaDetail,
-  SortOption,
-} from "../../types/MovieDetail/MediaDetail";
+import { Genre, MediaDetail, SortOption } from "../../types/MediaDetail";
 import fetchDataFromApi from "../../api";
 import GenreSelect from "./GenreSelect";
 import SortSelect from "./SortSelect";

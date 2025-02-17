@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import PosterFallback from "../../assets/no-poster.png";
 import { FC } from "react";
 import { useMediaQuery } from "@mantine/hooks";
-import { MediaItem } from "../../types/Movietype/MediaList";
+import { MediaItem } from "../../types/MediaList";
 
 interface MovieCardProps {
   mediatype?: string;
