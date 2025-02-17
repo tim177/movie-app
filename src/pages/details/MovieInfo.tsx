@@ -26,7 +26,15 @@ const MovieInfo: FC<MovieInfoProps> = ({ movieDetail, crew }) => {
   return (
     <Flex direction={"column"} gap={10} pos={"relative"}>
       <Title color="white">{movieDetail?.title || movieDetail?.name}</Title>
-      <Title color="dimmed" order={4}>
+      <Title
+        color="dimmed"
+        order={4}
+        sx={(theme) => ({
+          [theme.fn.smallerThan("sm")]: {
+            color: "inherit", // This removes the color on small screens
+          },
+        })}
+      >
         {movieDetail?.tagline}
       </Title>
       <Rating
@@ -37,10 +45,28 @@ const MovieInfo: FC<MovieInfoProps> = ({ movieDetail, crew }) => {
         fractions={2}
       />
       <Group>
-        <Text color="white">{movieDetail?.release_date}</Text>
+        <Text
+          sx={(theme) => ({
+            color: "white",
+            [theme.fn.smallerThan("sm")]: {
+              color: "inherit", // This removes the color on small screens
+            },
+          })}
+        >
+          {movieDetail?.release_date}
+        </Text>
         <Divider size="sm" orientation="vertical" />
         {movieDetail?.runtime && (
-          <Text color="white">{toHourAndMinute(movieDetail.runtime)}</Text>
+          <Text
+            sx={(theme) => ({
+              color: "white",
+              [theme.fn.smallerThan("sm")]: {
+                color: "inherit", // This removes the color on small screens
+              },
+            })}
+          >
+            {toHourAndMinute(movieDetail.runtime)}
+          </Text>
         )}
       </Group>
       <Group mt={20}>
@@ -57,7 +83,14 @@ const MovieInfo: FC<MovieInfoProps> = ({ movieDetail, crew }) => {
         </Stack>
       )}
       <Stack>
-        <Text color="white">
+        <Text
+          sx={(theme) => ({
+            color: "white",
+            [theme.fn.smallerThan("sm")]: {
+              color: "inherit", // This removes the color on small screens
+            },
+          })}
+        >
           <Text style={{ fontWeight: "bold", color: "gray", paddingRight: 10 }}>
             Summary:
           </Text>
