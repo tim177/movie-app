@@ -12,7 +12,7 @@ export default function AppLayout() {
     <AppShell
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
-      navbar={<Sidebar opened={opened} />}
+      navbar={<Sidebar opened={opened} setOpened={setOpened} />}
       header={<Header opened={opened} setOpened={setOpened} />}
     >
       <Outlet />

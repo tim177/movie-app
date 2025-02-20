@@ -10,12 +10,16 @@ import {
 
 interface SidebarProps {
   opened: boolean;
+  setOpened: (opened: boolean) => void;
 }
 
-export default function Sidebar({ opened }: SidebarProps) {
+export default function Sidebar({ opened, setOpened }: SidebarProps) {
   const location = useLocation();
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  const onNavLinkClick = () => {
+    if (isMobile) setOpened(false);
+  };
   return (
     <Navbar
       p="md"
@@ -38,6 +42,7 @@ export default function Sidebar({ opened }: SidebarProps) {
             to={item.href}
             active={location.pathname.startsWith(item.href)}
             sx={{ fontSize: "1.2rem" }}
+            onClick={onNavLinkClick}
           />
         ))}
       </Box>
