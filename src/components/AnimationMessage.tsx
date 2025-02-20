@@ -23,7 +23,8 @@ const AnimationMessage = () => {
       </Button>
       {showAnimation && (
         <Text size="lg" color="blue.6" weight={500}>
-          🎉 Woohoo! Let's find some awesome movies!
+          🎉 Woohoo! Go to Movies, click on any movie, and add it to your
+          favorites! 🍿✨
         </Text>
       )}
     </>

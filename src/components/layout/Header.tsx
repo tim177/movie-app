@@ -20,6 +20,8 @@ import {
   IconSearch,
   IconLogout, // Added Logout Icon
 } from "@tabler/icons-react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   opened: boolean;
@@ -28,8 +30,19 @@ interface HeaderProps {
 
 export default function Header({ opened, setOpened }: HeaderProps) {
   const theme = useMantineTheme();
+  const navigate = useNavigate();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <MantineHeader height={{ base: 60, md: 70 }} p="md">
@@ -81,14 +94,14 @@ export default function Header({ opened, setOpened }: HeaderProps) {
 
           {/* Logout button on larger screens */}
           <MediaQuery smallerThan="sm" styles={{ display: "none" }}>
-            <Button color="red" size="sm">
+            <Button color="red" size="sm" onClick={handleLogout}>
               Logout
             </Button>
           </MediaQuery>
 
           {/* Logout icon on smaller screens */}
           <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-            <ActionIcon color="red" onClick={() => {}} title="Logout">
+            <ActionIcon color="red" onClick={handleLogout} title="Logout">
               <IconLogout size="1.2rem" />
             </ActionIcon>
           </MediaQuery>

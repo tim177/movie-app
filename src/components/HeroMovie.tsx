@@ -152,7 +152,7 @@ export default function HeroMovie({
                 color="cyan"
                 sx={{ flex: 1 }}
               >
-                Watch Now
+                Watch Trailer
               </Button>
               <ActionIcon
                 variant="light"
