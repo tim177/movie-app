@@ -110,7 +110,7 @@ export default function MovieLanding() {
                   },
                 })}
               >
-                Doesn't matter!
+                😑😑😑
               </Title>
               <Text
                 size="xl"
@@ -119,16 +119,8 @@ export default function MovieLanding() {
                 mb={30}
                 sx={{ maxWidth: 600 }}
                 mx="auto"
-              >
-                <Blockquote cite="ai king">
-                  Aye!!! You Build This in just one day and pushed to github
-                  pushed to production with AI🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣
-                </Blockquote>
-              </Text>
-              <Text>
-                PS: Please come back after 1 week will make it more sarcastic or
-                will delete this repo
-              </Text>
+              ></Text>
+              PS: Deleting this repo in 1 week
               <Group position="center">
                 <Button
                   size="lg"
