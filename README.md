@@ -23,6 +23,7 @@ _A React-based movie exploration app with Firebase authentication, Firestore int
 - [🎯 Future Enhancements](#-future-enhancements)
 - [📝 License](#-license)
 - [📩 Contact](#-contact)
+- [💩 AI]()Build using ai in 1 day🤣🤣🤣🤣
 
 ---
 

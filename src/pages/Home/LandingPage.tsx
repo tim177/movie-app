@@ -10,6 +10,7 @@ import {
   Overlay,
   Center,
   Box,
+  Blockquote,
 } from "@mantine/core";
 
 import { Link } from "react-router-dom";
@@ -109,7 +110,7 @@ export default function MovieLanding() {
                   },
                 })}
               >
-                Find Your Next Favorite Movie!
+                Doesn't matter!
               </Title>
               <Text
                 size="xl"
@@ -119,10 +120,14 @@ export default function MovieLanding() {
                 sx={{ maxWidth: 600 }}
                 mx="auto"
               >
-                Don't know what to watch next? No worries! With MovieVerse, you
-                can save your favorites, read reviews, and explore the best
-                movies all in one place. The next great movie is waiting for
-                you!
+                <Blockquote cite="ai king">
+                  Aye!!! You Build This in just one day and pushed to github
+                  pushed to production with AI🤣🤣🤣🤣🤣🤣🤣🤣🤣🤣
+                </Blockquote>
+              </Text>
+              <Text>
+                PS: Please come back after 1 week will make it more sarcastic or
+                will delete this repo
               </Text>
               <Group position="center">
                 <Button

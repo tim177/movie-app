@@ -1,4 +1,3 @@
-// src/contexts/AuthContext.tsx
 import { createContext, useContext, ReactNode, useMemo } from "react";
 import { useAuthState } from "../hooks/useAuthState";
 import { loginUser, registerUser, logoutUser } from "../services/authService";
