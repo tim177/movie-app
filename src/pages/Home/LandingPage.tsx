@@ -110,7 +110,7 @@ export default function MovieLanding() {
                   },
                 })}
               >
-                😑😑😑
+                🍿🍾🎉
               </Title>
               <Text
                 size="xl"
@@ -120,7 +120,7 @@ export default function MovieLanding() {
                 sx={{ maxWidth: 600 }}
                 mx="auto"
               ></Text>
-              PS: Deleting this repo in 1 week
+              Please login/signup to continue
               <Group position="center">
                 <Button
                   size="lg"
